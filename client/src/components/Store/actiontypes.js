@@ -1,0 +1,9 @@
+//export const TESTACTION = 'TESTACTION';
+//export const GETREGIONS = 'GETREGIONS';
+export const SET_CATEGORIES = 'SET_CATEGORIES';
+export const SET_REGIONS = 'SET_REGIONS';
+export const SET_SELECTED = 'SET_SELECTED';
+export const SET_SELECTED_CAT = 'SET_SELECTED_CAT';
+export const GET_CAT_DETAIL = 'GET_CAT_DETAIL';
+export const SET_SEARCH_KEY = 'SET_SEARCH_KEY';
+export const SET_SEARCH_PRODUCTS = 'SET_SEARCH_PRODUCTS';
