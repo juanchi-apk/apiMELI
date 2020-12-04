@@ -26,7 +26,7 @@ const Catalog = ({products}) => (
 
       
   
-  <div style={{"display":"flex", "flex":"inline-block", "flex-flow": "row wrap"}}>
+  <div className="container" style={{"display":"flex", "flex":"inline-block", "flex-flow": "row wrap" , "width" :"80%"}}>
     {products!=null&&(
         products.results.map( product=>{
             return(

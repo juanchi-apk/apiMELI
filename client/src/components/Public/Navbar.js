@@ -16,7 +16,7 @@ const SearchStyle = styled.span`
   
 `;
 
-const NavContainer = ({setSearch, searchTerm, searchItems}) => {
+const NavContainer = ({setSearch, searchTerm, searchItems, limit}) => {
     
     var handleChange = (value) => {
     setSearch(value);
@@ -24,7 +24,7 @@ const NavContainer = ({setSearch, searchTerm, searchItems}) => {
 
     var handleSearchClick = (event) => {
         event.preventDefault();
-        searchItems(searchTerm)
+        searchItems(searchTerm, limit)
     }
     
     return <Navbar handleForm={handleChange} clickHandler={handleSearchClick}/>
@@ -62,6 +62,8 @@ const Navbar = ({ handleForm, clickHandler}) => {
 const mapStateToProps = (state) => {
     return {
         searchTerm: state.searchTerm ,
+        limit: state.searchLimit,
+
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -69,8 +71,8 @@ const mapDispatchToProps = (dispatch) => {
         setSearch: (searchvalue)=> {
             dispatch(setSearchKey(searchvalue))
         },
-        searchItems:(searchTerm)=>{
-            fetch(`http://localhost:3001/api/search?q=${searchTerm}`)
+        searchItems:(searchTerm, limit)=>{
+            fetch(`http://localhost:3001/api/search?q=${searchTerm}&l=${limit}`)
             .then(response => response.json())
             .then( results=>dispatch(setSearchProducts(results)))
             .catch(error => console.log('error', error));

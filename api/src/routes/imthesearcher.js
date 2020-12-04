@@ -14,6 +14,9 @@ server.get('/search', async (req, res) => {
     if (req.query.s) {
         query= `${query}&sort=${req.query.s}`
     }
+    if (req.query.l){
+        query=`${query}&limit=${req.query.l}`
+    }
     
    var products = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`, {
     })

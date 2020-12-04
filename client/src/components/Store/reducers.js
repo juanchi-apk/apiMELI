@@ -1,7 +1,12 @@
 import { SET_SEARCH_PRODUCTS, GETREGIONS, SET_REGIONS, SET_CATEGORIES, SET_SELECTED, SET_SELECTED_CAT, GET_CAT_DETAIL, SET_SEARCH_KEY } from './actiontypes';
 
 const initialState = {
-    init: []
+    init: [],
+    searchTerm: "zapatillas",
+    searchOffset : 0,
+    searchLimit : 6,
+    pagesQ:[],
+    selectedPage: 1,
 };
 
 
@@ -16,6 +21,13 @@ export default function rootReducer(state = initialState, action) {
              }; */
              case SET_SEARCH_PRODUCTS:
                     console.log(action.payload.searchResults);
+                    console.log(action.payload.searchResults.paging.primary_results)
+                    console.log(action.payload.searchResults.paging.total)
+                    let pagaux= action.payload.searchResults.paging.primary_results;
+                    let divi = state.searchLimit||initialState.searchLimit;
+                    let totalPages = Math.ceil(pagaux/divi);
+                    console.log(totalPages);
+                    console.log(divi)
                     let products;
                     if(action.payload.searchResults.query==="undefined"){
                         products=null
@@ -26,7 +38,8 @@ export default function rootReducer(state = initialState, action) {
                    return {
                     ...state,
                     foundedProducts: products,
-                    conditions:typeconditions
+                    conditions:typeconditions,
+                    pagesQ: totalPages,
                     }
              case SET_SEARCH_KEY:
          
