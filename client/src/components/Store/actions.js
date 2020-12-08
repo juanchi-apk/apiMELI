@@ -50,3 +50,4 @@ export function setSearchProducts(searchResults) {
     
     return { type: SET_SEARCH_PRODUCTS, payload:{searchResults}}
 }
+

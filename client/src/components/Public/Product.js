@@ -8,10 +8,10 @@ import ProductCard from './Secondary/ProductCard'
 import 'bootstrap/dist/css/bootstrap.css';
 import styled from 'styled-components';
 import FilterSorts from './Secondary/FiltersSort';
+import PageNav from './Secondary/Pagination';
 
 
 const ProductContainer = ({foundedProducts, conditions}) => {
-    console.log(conditions);
   return <Catalog products={foundedProducts} />
 }
 
@@ -20,7 +20,7 @@ const Catalog = ({products}) => (
   
   <div >
 <FilterSorts/>
-      
+<PageNav/>
 
 
 

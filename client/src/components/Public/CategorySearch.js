@@ -93,6 +93,7 @@ const mapStateToProps = (state) => {
     selReg: state.selReg,
     selectedCat : state.selectedCat,
     catDetails: state.catDetails,
+    
   }
 }
 

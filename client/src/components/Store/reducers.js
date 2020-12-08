@@ -4,9 +4,11 @@ const initialState = {
     init: [],
     searchTerm: "zapatillas",
     searchOffset : 0,
-    searchLimit : 6,
-    pagesQ:[],
+    searchLimit : 30,
+    pagesQ: 0,
+    pageList:[],
     selectedPage: 1,
+    sortingType: "relevancy",
 };
 
 
@@ -21,11 +23,15 @@ export default function rootReducer(state = initialState, action) {
              }; */
              case SET_SEARCH_PRODUCTS:
                     console.log(action.payload.searchResults);
+                    console.log(action.payload.searchResults.sort.id)
                     console.log(action.payload.searchResults.paging.primary_results)
                     console.log(action.payload.searchResults.paging.total)
                     let pagaux= action.payload.searchResults.paging.primary_results;
-                    let divi = state.searchLimit||initialState.searchLimit;
+                    let divi = action.payload.searchResults.paging.limit;
                     let totalPages = Math.ceil(pagaux/divi);
+                    let pageArray = Array.from(Array(totalPages).keys())
+                    console.log(pageArray);
+                    console.log();
                     console.log(totalPages);
                     console.log(divi)
                     let products;
@@ -40,6 +46,11 @@ export default function rootReducer(state = initialState, action) {
                     foundedProducts: products,
                     conditions:typeconditions,
                     pagesQ: totalPages,
+                    sortingType:action.payload.searchResults.sort.id ,
+                    searchLimit: action.payload.searchResults.paging.limit,
+                    searchTerm: action.payload.searchResults.query,
+                    pageList: pageArray,
+                    searchOffset: action.payload.searchResults.paging.offset,
                     }
              case SET_SEARCH_KEY:
          
