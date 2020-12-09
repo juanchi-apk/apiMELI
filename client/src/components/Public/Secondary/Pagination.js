@@ -22,7 +22,7 @@ const PageSelect = ({setPages, quantity }) => (
   <div>
   {
     quantity.length>0 && quantity.map((element)=>{
-      return <button key={element+1} onClick={()=>setPages(element+1)}>{element+1}</button> 
+      return <Button variant="info" key={element+1} onClick={()=>setPages(element+1)}>{element+1}</Button> 
     })
   }
   
